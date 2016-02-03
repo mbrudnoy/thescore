@@ -10,7 +10,7 @@
 ## Usage
 
 
-1). Save the master repo as a zip to your local machine, and extract its content. 
+1). Clone the repo to your your machine
 
 2). In a shell, go to the project's root folder and execute the command 'mvn test'. NOTE: This may take up to 30 minutes if you've never had Maven on your machine as it will have to download all dependencies.
 
