@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,21 +23,24 @@ public class playerStatsDisplayTest {
     @Before
     public void setup(){
         driver = new ChromeDriver();
+        // Enlarge the window to make sure the page is displaying a desktop web browser viewport
+        driver.manage().window().setSize(new Dimension(1024, 768));
     }
 
     @After
     public void cleanup() {
 
-        driver.close();
+        driver.quit();
     }
 
     @Test
     public void playerHeightAndBirthdateDisplayCorrectlyTest() {
 
+        String LEAGUE_NAME = "EPL Soccer";
         driver.get(HOME_PAGE_URL);
         TopHeader header = new TopHeader(driver);
         // Get to a random player's stats page
-        PlayerStatsPage statsPage = header.openMenu().selectLeague("EPL Soccer").goToLeadersTab().goToRandomPlayer();
+        PlayerStatsPage statsPage = header.openMenu().selectLeague(LEAGUE_NAME).goToLeadersTab().goToRandomPlayer();
         // Extract their height, weight, and birthdate
         String playerHeight = statsPage.getPlayerHeight().trim();
         String playerWeight = statsPage.getPlayerWeight().trim();
@@ -58,8 +62,6 @@ public class playerStatsDisplayTest {
 
         Assert.assertTrue("Player's birthdate is not formatted correctly. Found: '" + playerBirthdate + "'. URL=" + driver.getCurrentUrl(),
                             playerBirthdate.matches("\\d{4}-\\d{2}-\\d{2}\\s*\\(\\d*\\)"));
-
-
     }
 
 }

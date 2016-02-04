@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Michael on 2/2/2016.
+ *
+ * Represents the 'Leaders' section of a league page
  */
 public class LeadersPage {
 

@@ -8,12 +8,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Michael on 2/2/2016.
+ *
+ * Represents a player stats page
  */
 public class PlayerStatsPage {
 
     private WebDriver driver;
     private final String HEIGHT_WEIGHT_XPATH_LOCATOR    = "//div[@class='info-segment']/span[@class='formatted-height-weight info-segment-data']";
-    private final String BIRTHDATE_AGE_XPATH_LOCATOR = "//div[@class='info-segment']/span[@class='formatted-birthdate info-segment-data']";
+    private final String BIRTHDATE_AGE_XPATH_LOCATOR    = "//div[@class='info-segment']/span[@class='formatted-birthdate info-segment-data']";
 
     public PlayerStatsPage(WebDriver driver) {
         this.driver = driver;
@@ -32,6 +34,10 @@ public class PlayerStatsPage {
         return heightAndWeight.substring(heightAndWeight.indexOf('/')+1);
     }
 
+    /**
+     * Retrieves the WebElement that represents the player's height/weight
+     * @return WebElement
+     */
     public WebElement getPlayerHeightAndWeight() {
         return driver.findElement(By.xpath(HEIGHT_WEIGHT_XPATH_LOCATOR));
     }

@@ -13,7 +13,6 @@ public class TopHeader {
 
     public TopHeader(WebDriver driver) {
         this.driver = driver;
-
     }
 
     public MainMenu openMenu()  {
@@ -26,7 +25,4 @@ public class TopHeader {
         }
         return new MainMenu(driver);
     }
-
-
-
 }
